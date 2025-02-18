@@ -50,8 +50,8 @@ function Navbar() {
   };
 
   const menuItems = [
-    { text: "Home", path: "/Dashboard" },
-    { text: "Appointments", path: "#" },
+    { text: "Home", path: "/homepage" },
+    { text: "Appointments", path: "/appointment" },
     { text: "Payments", path: "#" },
   ];
 

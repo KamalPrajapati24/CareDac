@@ -20,7 +20,6 @@ import {
   Select,
   FormControl,
   MenuItem,
-  FormLabel,
   TextField,
   InputAdornment,
 } from "@mui/material";
@@ -35,17 +34,26 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
+import { useNavigate } from "react-router-dom";
 
 function CaregiverProfile() {
   const location = useLocation();
   const { id } = useParams();
   const caregiver = location.state?.caregiver;
-
+  const navigate = useNavigate();
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const [open, setOpen] = useState(false);
   const [selectedMember, setSelectedMember] = useState("");
-  const [selectedDate, setSelectedDate] = useState(new Date(2025, 1, 17));
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedTime, setSelectedTime] = useState(null);
+
+  const timeSlots = [
+    "10:00Am - 12:00Pm",
+    "12:00Pm - 02:00Pm",
+    "03:00Pm - 05:00Pm",
+    "05:00Pm - 07:00Pm",
+  ];
 
   const familyMembers = ["My Parents", "My Child", "My Client", "Others"];
   if (!caregiver) {
@@ -60,6 +68,16 @@ function CaregiverProfile() {
     month: "long",
     day: "numeric",
   });
+
+  const handleConfirm = () => {
+    if (!selectedTime) {
+      alert("Please select a time slot");
+      return;
+    }
+    navigate("/appointment", {
+      state: { date: format(selectedDate, "dd/MM/yyyy"), time: selectedTime },
+    });
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -1128,17 +1146,18 @@ function CaregiverProfile() {
               >
                 <Box>
                   <Typography
-                    sx={{ 
-                      color:"rgba(0, 0, 0, 0.6)",
-                      fontWeight:"400",
-                      fontSize:"1rem",
-                      lineHeight:"1.4375em",
-                      padding:"0px",
-                      position:"relative",
-                     }}
+                    sx={{
+                      color: "rgba(0, 0, 0, 0.6)",
+                      fontWeight: "400",
+                      fontSize: "1rem",
+                      lineHeight: "1.4375em",
+                      padding: "0px",
+                      position: "relative",
+                    }}
                   >
                     Appointment
                   </Typography>
+
                   <DatePicker
                     selected={selectedDate}
                     onChange={(date) => setSelectedDate(date)}
@@ -1146,16 +1165,15 @@ function CaregiverProfile() {
                     customInput={
                       <TextField
                         sx={{
-                          fontWeight: "400",
-                          fontSize: "1rem",
-                          lineHeight: "1.4375em",
+                          mt: 2,
+                          fontWeight: "500",
+                          fontSize: "1.2rem",
+                          lineHeight: "1.5em",
                           color: "rgba(0, 0, 0, 0.87)",
                           border: "1px solid rgb(71, 84, 103)",
                           borderRadius: "10px",
+                          width: "100%",
                         }}
-                        fullWidth
-                        variant="outlined"
-                        size="small"
                         value={format(selectedDate, "dd/MM/yyyy")}
                         InputProps={{
                           startAdornment: (
@@ -1169,42 +1187,79 @@ function CaregiverProfile() {
                     }
                   />
                 </Box>
+                <Box>
+                  <Typography
+                    sx={{
+                      mt: 2,
+                      color: "rgba(0, 0, 0, 0.6)",
+                      fontWeight: "400",
+                      fontSize: "1rem",
+                      lineHeight: "1.4375em",
+                      padding: "0px",
+                      position: "relative",
+                    }}
+                  >
+                    Booking Time
+                  </Typography>
+
+                  <Grid container spacing={1} sx={{ mt: 1 }}>
+                    {timeSlots.map((time, index) => (
+                      <Grid item key={index}>
+                        <Button
+                          fullWidth
+                          onClick={() => setSelectedTime(time)}
+                          sx={{
+                            backgroundColor: "rgb(255, 255, 255)",
+                            color: "rgba(0, 0, 0, 0.87)",
+                            fontSize: "1.2rem",
+                            fontWeight: "500",
+                            textTransform: "none",
+                            borderRadius: "10px",
+                            boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
+                          }}
+                        >
+                          {time}
+                        </Button>
+                      </Grid>
+                    ))}
+                  </Grid>
+                </Box>
               </CardContent>
             </Paper>
             <Grid
-            sx={{
-              boxSizing:"border-box",
-              display:"flex",
-              flexFlow:"wrap",
-              width:"calc(100% + 16px)",
-              marginLeft:"-16px",
-              marginTop:"15px",
-            }}
+              sx={{
+                boxSizing: "border-box",
+                display: "flex",
+                flexFlow: "wrap",
+                width: "calc(100% + 16px)",
+                marginLeft: "-16px",
+                marginTop: "15px",
+              }}
             >
               <Grid
-              sx={{
-                paddingLeft:"16px",
-                paddingTop:"16px",
-                flexBasis:"100%",
-                WebkitBoxFlex:"0",
-                flexGrow:"0",
-                maxWidth:"100%",
-              }}
+                sx={{
+                  paddingLeft: "16px",
+                  paddingTop: "16px",
+                  flexBasis: "100%",
+                  WebkitBoxFlex: "0",
+                  flexGrow: "0",
+                  maxWidth: "100%",
+                }}
               >
-            <Button
-            sx={{
-              width:"100%",
-              padding:"12px 15px",
-              fontWeight:"bold",
-              borderRadius:"100px",
-              backgroundColor:"rgb(2, 79, 170)",
-              color:"rgb(255, 255, 255)",
-
-            }}
-            >
-              continue
-            </Button>
-            </Grid>
+                <Button
+                  onClick={handleConfirm}
+                  sx={{
+                    width: "100%",
+                    padding: "12px 15px",
+                    fontWeight: "bold",
+                    borderRadius: "100px",
+                    backgroundColor: "rgb(2, 79, 170)",
+                    color: "rgb(255, 255, 255)",
+                  }}
+                >
+                  continue
+                </Button>
+              </Grid>
             </Grid>
           </form>
         </DialogContent>

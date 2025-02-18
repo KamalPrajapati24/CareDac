@@ -15,6 +15,7 @@ import MemberDetails from "./pages/member-details";
 import HomePage from "./pages/homepage";
 import CaregiverProfile from "./pages/caregiver-profile";
 import PublicLayout from "./Layout/index";
+import AppointmentPage from "./pages/appointment";
 function App() {
   return (
     <BrowserRouter>
@@ -22,6 +23,7 @@ function App() {
         <Route element={<PublicLayout />}>
           <Route path="/homepage" element={<HomePage />} />
           <Route path="/caregiver-profile/:id" element={<CaregiverProfile />} />
+          <Route path="/appointment" element={<AppointmentPage/>}/>
         </Route>
 
         <Route>
@@ -38,6 +40,7 @@ function App() {
           <Route path="/service-need" element={<ServiceNeed />} />
           <Route path="/patient-details" element={<PatientDetails />} />
           <Route path="/member-details" element={<MemberDetails />} />
+          
         </Route>
       </Routes>
     </BrowserRouter>
