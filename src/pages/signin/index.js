@@ -163,7 +163,7 @@ function Signin() {
             <Grid item xs={12}>
               <Typography align="center">
                 Don't have an account?{" "}
-                <Link to="/homepage">
+                <Link to="/signup">
                   <Button variant="text" color="primary">
                     Signup
                   </Button>

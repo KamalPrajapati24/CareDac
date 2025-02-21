@@ -31,7 +31,6 @@ import TranslateIcon from "@mui/icons-material/Translate";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import WatchLaterOutlinedIcon from "@mui/icons-material/WatchLaterOutlined";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import { useNavigate } from "react-router-dom";
@@ -46,13 +45,19 @@ function CaregiverProfile() {
   const [open, setOpen] = useState(false);
   const [selectedMember, setSelectedMember] = useState("");
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [selectedTime, setSelectedTime] = useState(null);
+  const [startSlot, setStartSlot] = useState(null);
+  const [endSlot, setEndSlot] = useState(null);
+  const [disabledSlots, setDisabledSlots] = useState([]);
 
   const timeSlots = [
-    "10:00Am - 12:00Pm",
-    "12:00Pm - 02:00Pm",
-    "03:00Pm - 05:00Pm",
-    "05:00Pm - 07:00Pm",
+    "10:00Am",
+    "10:30Am",
+    "11:00Am",
+    "11:30Am",
+    "12:00Pm",
+    "12:30Pm",
+    "02:00Pm",
+    "02:30Pm",
   ];
 
   const familyMembers = ["My Parents", "My Child", "My Client", "Others"];
@@ -69,16 +74,44 @@ function CaregiverProfile() {
     day: "numeric",
   });
 
-  const handleConfirm = () => {
-    if (!selectedTime) {
-      alert("Please select a time slot");
-      return;
-    }
-    navigate("/appointment", {
-      state: { date: format(selectedDate, "dd/MM/yyyy"), time: selectedTime },
-    });
-  };
-
+  const handleSelect = (time) => {
+      const selectedIndex = timeSlots.indexOf(time);
+  
+      if (!startSlot) {
+        setStartSlot(time);
+        setEndSlot(null);
+        setDisabledSlots([]); 
+      } else if (!endSlot) {
+        const startIndex = timeSlots.indexOf(startSlot);
+  
+        
+        if (selectedIndex >= startIndex + 2) {
+          setEndSlot(time);
+          setDisabledSlots(timeSlots.slice(startIndex, selectedIndex + 1)); 
+        } else {
+          alert("Please select at least 1 hour slot");
+        }
+      } else {
+        
+        setStartSlot(time);
+        setEndSlot(null);
+        setDisabledSlots([]);
+      }
+    };
+  
+    const handleConfirm = () => {
+      if (!startSlot || !endSlot) {
+        alert("Please select a start and end time.");
+        return;
+      }
+      navigate("/appointment", {
+        state: {
+          date: format(selectedDate, "dd/MM/yyyy"),
+          times: [startSlot, endSlot],
+        },
+      });
+    };
+    
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -1207,7 +1240,21 @@ function CaregiverProfile() {
                       <Grid item key={index}>
                         <Button
                           fullWidth
-                          onClick={() => setSelectedTime(time)}
+                          variant={
+                            startSlot === time || endSlot === time
+                              ? "contained"
+                              : "outlined"
+                          }
+                          onClick={() => handleSelect(time)}
+                          disabled={
+                            (startSlot &&
+                              endSlot &&
+                              timeSlots.indexOf(time) >
+                                timeSlots.indexOf(startSlot) &&
+                              timeSlots.indexOf(time) <
+                                timeSlots.indexOf(endSlot)) ||
+                            disabledSlots.includes(time)
+                          }
                           sx={{
                             backgroundColor: "rgb(255, 255, 255)",
                             color: "rgba(0, 0, 0, 0.87)",

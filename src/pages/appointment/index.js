@@ -4,8 +4,9 @@ import { Paper, CardContent, Typography, Button } from "@mui/material";
 
 const AppointmentPage = () => {
   const location = useLocation();
+  const { state } = location;
   const navigate = useNavigate();
-  const { date, time } = location.state || {};
+  const { date, times } = state || { date: "No date selected", times: [] };
 
   return (
     <Paper
@@ -19,13 +20,14 @@ const AppointmentPage = () => {
     >
       <CardContent>
         <Typography variant="h5">Appointment Confirmation</Typography>
-        {date && time ? (
+        {date && times ? (
           <>
             <Typography sx={{ mt: 2 }}>
               <strong>Date:</strong> {date}
             </Typography>
             <Typography sx={{ mt: 1 }}>
-              <strong>Time:</strong> {time}
+              <strong>Time:</strong>{" "}
+              {times.length > 0 ? times.join(" to ") : "No time selected"}
             </Typography>
           </>
         ) : (

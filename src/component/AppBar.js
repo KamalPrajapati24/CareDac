@@ -35,7 +35,7 @@ function Navbar() {
     }
   };
 
-  // Check on mount and on resize
+  
   useEffect(() => {
     checkResponsiveMode();
     window.addEventListener("resize", checkResponsiveMode);
@@ -73,16 +73,16 @@ function Navbar() {
             </IconButton>
           )}
 
-          {/* Logo Container - Expands to Max Width in Responsive Mode */}
+          
           <Box
             sx={{
               display: "flex",
               alignItems: "center",
               flexGrow: 1,
-              justifyContent: isMobile ? "center" : "flex-start", // Center in responsive mode
+              justifyContent: isMobile ? "center" : "flex-start", 
             }}
           >
-            <img src={Image} alt="Logo" style={{ height: 40, marginRight: 10, maxWidth: "100%" }} />
+            <img src={Image} alt="Logo" style={{ height: 40, marginRight: 10, maxWidth: "100%", border: "1px solid rgb(152, 162, 179)", borderRadius: "10px"  }} />
             {!isMobile && (
               <>
                 <Typography variant="h6" color="inherit">
@@ -110,7 +110,7 @@ function Navbar() {
         </Toolbar>
       </AppBar>
 
-      {/* Drawer for Mobile Menu */}
+     
       <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
         <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
           <List>
