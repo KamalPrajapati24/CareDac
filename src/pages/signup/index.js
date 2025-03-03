@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
 import BackgroundImage from "../../images/Bg.svg";
@@ -54,7 +54,7 @@ const validationSchema = yup.object({
 });
 
 function Signup() {
-  const [mobile, setMobile] = useState("");
+  
   const initialValues = {
     fullname: "",
     dob: "",
@@ -66,10 +66,7 @@ function Signup() {
     terms: false,
   };
 
-  const handleMobileChange = (value) => {
-    setMobile(value);
-    setMobile("mobile", value);
-  };
+  
 
   const {
     register,

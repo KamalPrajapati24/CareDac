@@ -76,6 +76,7 @@ const CaregiverCard = ({ caregiver }) => {
   return (
     <Box>
       <Link to={`/caregiver-profile/${caregiver.id}`} state={{ caregiver }}>
+       
         <Paper
           sx={{
             backgroundColor: "rgb(255, 255, 255)",
@@ -234,7 +235,7 @@ const CaregiverCard = ({ caregiver }) => {
                   alignItems: "end",
                 }}
               >
-                <img src={shield} />
+                <img src={shield}  alt={""}/>
                 <Typography
                   sx={{
                     margin: "0px",
@@ -259,11 +260,11 @@ function HomePage() {
 
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
-  const isMediumScreen = useMediaQuery(theme.breakpoints.between('sm', 'md'));
+  
   
   const [showingResultsFor, setShowingResultsFor] = React.useState("All");
   const [location, setLocation] = React.useState("");
-
+  
   const handleShowingResultsChange = (event) => {
     setShowingResultsFor(event.target.value);
   };
@@ -579,6 +580,7 @@ function HomePage() {
                                 >
                                   <img
                                     src={Stars}
+                                    alt={""}
                                     style={{
                                       width: "20px",
                                       height: "20px",
@@ -586,6 +588,7 @@ function HomePage() {
                                   />
                                   <img
                                     src={Stars}
+                                    alt={""}
                                     style={{
                                       width: "20px",
                                       height: "20px",
@@ -593,6 +596,7 @@ function HomePage() {
                                   />
                                   <img
                                     src={Stars}
+                                    alt={""}
                                     style={{
                                       width: "20px",
                                       height: "20px",
@@ -600,6 +604,7 @@ function HomePage() {
                                   />
                                   <img
                                     src={Stars}
+                                    alt={""}
                                     style={{
                                       width: "20px",
                                       height: "20px",
@@ -648,6 +653,7 @@ function HomePage() {
                                 >
                                   <img
                                     src={Stars}
+                                    alt={""}
                                     style={{
                                       width: "20px",
                                       height: "20px",
@@ -655,6 +661,7 @@ function HomePage() {
                                   />
                                   <img
                                     src={Stars}
+                                    alt={""}
                                     style={{
                                       width: "20px",
                                       height: "20px",
@@ -662,60 +669,7 @@ function HomePage() {
                                   />
                                   <img
                                     src={Stars}
-                                    style={{
-                                      width: "20px",
-                                      height: "20px",
-                                    }}
-                                  />
-                                  <Typography>& above</Typography>
-                                </div>
-                              </Button>
-                              <Button
-                                sx={{
-                                  WebkitBoxAlign: "center",
-                                  WebkitBoxPack: "center",
-                                  position: "relative",
-                                  boxSizing: "border-box",
-                                  WebkitTapHighlightColor: "transparent",
-                                  cursor: "pointer",
-                                  userSelect: "none",
-                                  verticalAlign: "middle",
-                                  appearance: "none",
-                                  fontWeight: "500",
-                                  fontSize: "0.875rem",
-                                  lineHeight: "1.75",
-                                  textTransform: "none",
-                                  minWidth: "64px",
-                                  backgroundColor: "rgb(239, 239, 239)",
-                                  color: "rgb(71, 84, 103)",
-                                  display: "block",
-                                  outline: "0px",
-                                  margin: "0px",
-                                  transition:
-                                    "background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1)",
-                                  padding: "12px 20px",
-                                  borderRadius: "100px",
-                                  border: "1px solid rgb(152, 162, 179)",
-                                  marginBottom: "8px",
-                                  marginRight: "8px",
-                                }}
-                              >
-                                <div
-                                  style={{
-                                    display: "flex",
-                                    gap: "8px",
-                                    overflow: "hidden",
-                                  }}
-                                >
-                                  <img
-                                    src={Stars}
-                                    style={{
-                                      width: "20px",
-                                      height: "20px",
-                                    }}
-                                  />
-                                  <img
-                                    src={Stars}
+                                    alt={""}
                                     style={{
                                       width: "20px",
                                       height: "20px",
@@ -763,6 +717,63 @@ function HomePage() {
                                 >
                                   <img
                                     src={Stars}
+                                    alt={""}
+                                    style={{
+                                      width: "20px",
+                                      height: "20px",
+                                    }}
+                                  />
+                                  <img
+                                    src={Stars}
+                                    alt={""}
+                                    style={{
+                                      width: "20px",
+                                      height: "20px",
+                                    }}
+                                  />
+                                  <Typography>& above</Typography>
+                                </div>
+                              </Button>
+                              <Button
+                                sx={{
+                                  WebkitBoxAlign: "center",
+                                  WebkitBoxPack: "center",
+                                  position: "relative",
+                                  boxSizing: "border-box",
+                                  WebkitTapHighlightColor: "transparent",
+                                  cursor: "pointer",
+                                  userSelect: "none",
+                                  verticalAlign: "middle",
+                                  appearance: "none",
+                                  fontWeight: "500",
+                                  fontSize: "0.875rem",
+                                  lineHeight: "1.75",
+                                  textTransform: "none",
+                                  minWidth: "64px",
+                                  backgroundColor: "rgb(239, 239, 239)",
+                                  color: "rgb(71, 84, 103)",
+                                  display: "block",
+                                  outline: "0px",
+                                  margin: "0px",
+                                  transition:
+                                    "background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1)",
+                                  padding: "12px 20px",
+                                  borderRadius: "100px",
+                                  border: "1px solid rgb(152, 162, 179)",
+                                  marginBottom: "8px",
+                                  marginRight: "8px",
+                                }}
+                              >
+                                <div
+                                  style={{
+                                    display: "flex",
+                                    gap: "8px",
+                                    overflow: "hidden",
+                                  }}
+                                >
+                                  <img
+                                    src={Stars}
+                                    alt={""}
                                     style={{
                                       width: "20px",
                                       height: "20px",

@@ -8,7 +8,6 @@ import {
   InputAdornment,
   Box,
   Divider,
-  Paper,
 } from "@mui/material";
 
 import { Lock as LockIcon } from "@mui/icons-material";
