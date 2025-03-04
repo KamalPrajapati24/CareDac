@@ -16,6 +16,12 @@ import HomePage from "./pages/homepage";
 import CaregiverProfile from "./pages/caregiver-profile";
 import PublicLayout from "./Layout/index";
 import AppointmentPage from "./pages/appointment";
+import MakePayment from "./pages/payment";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe("pk_test_51QynzNQP1oQVAW7AhlyvQQRqFDDJRcQWkefEMSPyTQo7XuM0wHnPrbCSnuDC3eWMeCLpjwBFvFX71LsQrqAJbkmN001J2vBoSH");
+
 function App() {
   return (
     <BrowserRouter>
@@ -24,6 +30,14 @@ function App() {
           <Route path="/homepage" element={<HomePage />} />
           <Route path="/caregiver-profile/:id" element={<CaregiverProfile />} />
           <Route path="/appointment" element={<AppointmentPage/>}/>
+          <Route
+            path="/payment"
+            element={
+              <Elements stripe={stripePromise}>
+                <MakePayment />
+              </Elements>
+            }
+          />
         </Route>
 
         <Route>
@@ -41,6 +55,8 @@ function App() {
           <Route path="/patient-details" element={<PatientDetails />} />
           <Route path="/member-details" element={<MemberDetails />} />
           
+          
+        
         </Route>
       </Routes>
     </BrowserRouter>

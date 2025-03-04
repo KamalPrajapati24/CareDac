@@ -30,6 +30,7 @@ import MilitaryTechIcon from "@mui/icons-material/MilitaryTech";
 import TranslateIcon from "@mui/icons-material/Translate";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import WatchLaterOutlinedIcon from "@mui/icons-material/WatchLaterOutlined";
+import { useNavigate } from "react-router-dom";
 
 const availableTimes = [
   "13:00",
@@ -92,6 +93,7 @@ function CaregiverProfile() {
   const [selectedDay, setSelectedDay] = useState("");
   const [selectedTime, setSelectedTime] = useState([]);
   const [thirdTime, setThirdTime] = useState(null);
+  const navigate = useNavigate();
 
   const familyMembers = ["My Parents", "My Child", "My Client", "Others"];
   if (!caregiver) {
@@ -145,6 +147,10 @@ function CaregiverProfile() {
   const caregiverRate = 8;
   const totalBookingHr = 0;
   const totalAmount = caregiverRate * totalBookingHr;
+
+  const handleBooking = () => {
+    navigate("/payment");
+  }
 
   return (
     <Box>
@@ -1816,7 +1822,7 @@ function CaregiverProfile() {
               maxWidth: "50%",
             }}
             >
-              <Button
+              <Button onClick={handleBooking}
               sx={{
                 padding : "12px 15px",
                 fontWeight: "bold",
