@@ -13,6 +13,7 @@ import {
   MenuItem,
   Button,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 function PatientDetails() {
   const [countries, setCountries] = useState([]);
@@ -21,7 +22,7 @@ function PatientDetails() {
 
   const [selectedCountry, setSelectedCountry] = useState("");
   const [selectedState, setSelectedState] = useState("");
-
+  const navigate = useNavigate();
   const baseUrl = "https://countriesnow.space/api/v0.1/countries";
 
   // Fetch countries
@@ -89,6 +90,10 @@ function PatientDetails() {
 
   const onSubmit = (data) => {
     alert("Data save successful!");
+  };
+
+  const onSave = () => {
+    navigate("/homepage");
   };
 
   return (
@@ -235,7 +240,7 @@ function PatientDetails() {
               </Grid>
               <Grid item xs={12}></Grid>
               <Grid item xs={12}>
-                <Button
+                <Button onClick={onSave}
                   fullWidth
                   variant="contained"
                   color="primary"

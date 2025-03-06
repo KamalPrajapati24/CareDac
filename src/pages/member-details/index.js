@@ -27,7 +27,7 @@ import {
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-
+import { useNavigate } from "react-router-dom";
 
 const validationSchema = yup.object({
   fullname: yup.string().required("Full name is required"),
@@ -64,7 +64,7 @@ function MemberDetails() {
 
   const [selectedCountry, setSelectedCountry] = useState("");
   const [selectedState, setSelectedState] = useState("");
-
+  const navigate = useNavigate();
   const baseUrl = "https://countriesnow.space/api/v0.1/countries";
 
   // Fetch countries
@@ -134,6 +134,10 @@ function MemberDetails() {
     console.log("Form Data Submitted:", data);
     alert("Member Details Added Successfully!");
     reset(initialValues);
+  };
+
+  const onSave = () => {
+    navigate("/homepage");
   };
 
   return (
@@ -398,7 +402,7 @@ function MemberDetails() {
             </Grid>
             <Grid item xs={12}></Grid>
             <Grid item xs={12}>
-              <Button
+              <Button onClick={onSave}
                 fullWidth
                 variant="contained"
                 color="primary"

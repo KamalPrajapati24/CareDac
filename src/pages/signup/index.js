@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
 import BackgroundImage from "../../images/Bg.svg";
@@ -29,6 +29,7 @@ import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const validationSchema = yup.object({
   fullname: yup.string().required("Full name is required"),
@@ -54,19 +55,18 @@ const validationSchema = yup.object({
 });
 
 function Signup() {
-  
+  const [phone, setPhone] = useState("");
+  const navigate = useNavigate();
+
   const initialValues = {
     fullname: "",
     dob: "",
     email: "",
-    mobile: "",
     password: "",
     confirmPassword: "",
     gender: "",
     terms: false,
   };
-
-  
 
   const {
     register,
@@ -84,6 +84,11 @@ function Signup() {
     alert("Signup successful!");
     reset(initialValues);
   };
+
+  const onSignup = () => {
+    navigate("/choose-patient");
+  }
+
 
   return (
     <Box
@@ -203,18 +208,16 @@ function Signup() {
                 Phone Number
               </Typography>
               <PhoneInput
-                fullWidth
-                name="mobile"
-                country={"in"}
-                InputProps={{
-                  name: "mobile",
-                  required: true,
-                }}
+                country={"us"} // Default country
+                value={phone}
+                onChange={setPhone}
                 inputStyle={{
                   width: "100%",
-                  height: "56px",
-                  borderRadius: "4px",
-                  borderColor: errors.mobile ? "red" : "#ced4da",
+                  height:"56px",
+                  fontSize: "16px",
+                }}
+                containerStyle={{
+                  width: "100%",
                 }}
               />
             </Grid>
@@ -330,7 +333,7 @@ function Signup() {
             </Grid>
 
             <Grid item xs={12}>
-              <Button
+              <Button onClick={onSignup}
                 fullWidth
                 variant="contained"
                 color="primary"
