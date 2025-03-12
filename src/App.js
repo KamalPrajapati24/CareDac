@@ -16,7 +16,7 @@ import HomePage from "./pages/homepage";
 import CaregiverProfile from "./pages/caregiver-profile";
 import PublicLayout from "./Layout/index";
 import AppointmentPage from "./pages/appointment";
-import AppointmentDetailsPage from "./pages/appointment-details";
+import PreviousAppointmentDetails from "./pages/previous-appointment-details";
 import MakePayment from "./pages/payment";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
@@ -31,7 +31,7 @@ function App() {
           <Route path="/homepage" element={<HomePage />} />
           <Route path="/caregiver-profile/:id" element={<CaregiverProfile />} />
           <Route path="/appointment" element={<AppointmentPage/>}/>
-          <Route path="/appointment-details" element={<AppointmentDetailsPage/>}/>
+          <Route path="/previous-appointment-details/:id" element={<PreviousAppointmentDetails/>}/>
           <Route
             path="/payment"
             element={

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
 import BackgroundImage from "../../images/Bg.svg";
@@ -28,8 +28,7 @@ import {
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const validationSchema = yup.object({
   fullname: yup.string().required("Full name is required"),
@@ -55,13 +54,13 @@ const validationSchema = yup.object({
 });
 
 function Signup() {
-  const [phone, setPhone] = useState("");
   const navigate = useNavigate();
 
-  const initialValues = {
+  const defaultValues = {
     fullname: "",
     dob: "",
     email: "",
+    mobile: "",
     password: "",
     confirmPassword: "",
     gender: "",
@@ -76,19 +75,15 @@ function Signup() {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(validationSchema),
-    initialValues,
+    defaultValues,
   });
 
   const onSubmit = (data) => {
     console.log("Form Data Submitted:", data);
     alert("Signup successful!");
-    reset(initialValues);
-  };
-
-  const onSignup = () => {
+    reset(defaultValues);
     navigate("/choose-patient");
-  }
-
+  };
 
   return (
     <Box
@@ -112,18 +107,14 @@ function Signup() {
         <Divider sx={{ marginBottom: 2 }} />
         <form onSubmit={handleSubmit(onSubmit)}>
           <Grid container spacing={1}>
+            {/* Full Name */}
             <Grid item xs={12}>
-              <Typography
-                variant="subtitle1"
-                align="left"
-                color="textSecondary"
-              >
+              <Typography variant="subtitle1" align="left" color="textSecondary">
                 Full Name
               </Typography>
               <TextField
                 fullWidth
                 variant="outlined"
-                name="fullName"
                 {...register("fullname")}
                 error={!!errors.fullname}
                 helperText={errors.fullname?.message}
@@ -133,24 +124,18 @@ function Signup() {
                       <PersonIcon />
                     </InputAdornment>
                   ),
-                  sx: {
-                    [`& fieldset`]: { borderRadius: 5 },
-                  },
+                  sx: { "& fieldset": { borderRadius: 5 } },
                 }}
               />
             </Grid>
 
+            {/* Date of Birth */}
             <Grid item xs={12}>
-              <Typography
-                variant="subtitle1"
-                align="left"
-                color="textSecondary"
-              >
+              <Typography variant="subtitle1" align="left" color="textSecondary">
                 Date Of Birth
               </Typography>
               <TextField
                 fullWidth
-                name="dob"
                 type="date"
                 {...register("dob")}
                 error={!!errors.dob}
@@ -161,27 +146,19 @@ function Signup() {
                       <CalendarTodayIcon />
                     </InputAdornment>
                   ),
-                  sx: {
-                    [`& fieldset`]: { borderRadius: 5 },
-                  },
+                  sx: { "& fieldset": { borderRadius: 5 } },
                 }}
-                InputLabelProps={{
-                  shrink: true,
-                }}
+                InputLabelProps={{ shrink: true }}
               />
             </Grid>
 
+            {/* Email */}
             <Grid item xs={12}>
-              <Typography
-                variant="subtitle1"
-                align="left"
-                color="textSecondary"
-              >
+              <Typography variant="subtitle1" align="left" color="textSecondary">
                 Email
               </Typography>
               <TextField
                 fullWidth
-                name="email"
                 type="email"
                 {...register("email")}
                 error={!!errors.email}
@@ -192,47 +169,47 @@ function Signup() {
                       <EmailIcon />
                     </InputAdornment>
                   ),
-                  sx: {
-                    [`& fieldset`]: { borderRadius: 5 },
-                  },
+                  sx: { "& fieldset": { borderRadius: 5 } },
                 }}
               />
             </Grid>
 
+            {/* Phone Number */}
             <Grid item xs={12}>
-              <Typography
-                variant="subtitle1"
-                align="left"
-                color="textSecondary"
-              >
+              <Typography variant="subtitle1" align="left" color="textSecondary">
                 Phone Number
               </Typography>
-              <PhoneInput
-                country={"us"} // Default country
-                value={phone}
-                onChange={setPhone}
-                inputStyle={{
-                  width: "100%",
-                  height:"56px",
-                  fontSize: "16px",
-                }}
-                containerStyle={{
-                  width: "100%",
-                }}
+              <Controller
+                name="mobile"
+                control={control}
+                render={({ field }) => (
+                  <PhoneInput
+                    country={"us"}
+                    value={field.value}
+                    onChange={field.onChange}
+                    inputStyle={{
+                      width: "100%",
+                      height: "56px",
+                      fontSize: "16px",
+                    }}
+                    containerStyle={{ width: "100%" }}
+                  />
+                )}
               />
+              {errors.mobile && (
+                <Typography variant="caption" color="error">
+                  {errors.mobile.message}
+                </Typography>
+              )}
             </Grid>
 
+            {/* Password */}
             <Grid item xs={12}>
-              <Typography
-                variant="subtitle1"
-                align="left"
-                color="textSecondary"
-              >
+              <Typography variant="subtitle1" align="left" color="textSecondary">
                 Password
               </Typography>
               <TextField
                 fullWidth
-                name="password"
                 type="password"
                 {...register("password")}
                 error={!!errors.password}
@@ -243,24 +220,18 @@ function Signup() {
                       <LockIcon />
                     </InputAdornment>
                   ),
-                  sx: {
-                    [`& fieldset`]: { borderRadius: 5 },
-                  },
+                  sx: { "& fieldset": { borderRadius: 5 } },
                 }}
               />
             </Grid>
 
+            {/* Confirm Password */}
             <Grid item xs={12}>
-              <Typography
-                variant="subtitle1"
-                align="left"
-                color="textSecondary"
-              >
+              <Typography variant="subtitle1" align="left" color="textSecondary">
                 Confirm Password
               </Typography>
               <TextField
                 fullWidth
-                name="confirmPassword"
                 type="password"
                 {...register("confirmPassword")}
                 error={!!errors.confirmPassword}
@@ -271,19 +242,14 @@ function Signup() {
                       <LockIcon />
                     </InputAdornment>
                   ),
-                  sx: {
-                    [`& fieldset`]: { borderRadius: 5 },
-                  },
+                  sx: { "& fieldset": { borderRadius: 5 } },
                 }}
               />
             </Grid>
 
+            {/* Gender */}
             <Grid item xs={12}>
-              <FormControl
-                component="fieldset"
-                margin="normal"
-                error={!!errors.gender}
-              >
+              <FormControl component="fieldset" margin="normal" error={!!errors.gender}>
                 <FormLabel component="legend">Gender</FormLabel>
                 <Controller
                   name="gender"
@@ -291,38 +257,24 @@ function Signup() {
                   rules={{ required: "Gender selection is required" }}
                   render={({ field }) => (
                     <RadioGroup row {...field}>
-                      <FormControlLabel
-                        value="male"
-                        control={<Radio />}
-                        label="Male"
-                      />
-                      <FormControlLabel
-                        value="female"
-                        control={<Radio />}
-                        label="Female"
-                      />
-                      <FormControlLabel
-                        value="others"
-                        control={<Radio />}
-                        label="Others"
-                      />
+                      <FormControlLabel value="male" control={<Radio />} label="Male" />
+                      <FormControlLabel value="female" control={<Radio />} label="Female" />
+                      <FormControlLabel value="others" control={<Radio />} label="Others" />
                     </RadioGroup>
                   )}
                 />
-                <Typography variant="caption" color="error">
-                  {errors.gender?.message}
-                </Typography>
+                {errors.gender && (
+                  <Typography variant="caption" color="error">
+                    {errors.gender.message}
+                  </Typography>
+                )}
               </FormControl>
             </Grid>
 
-            <Grid item xs={12}>
-              <Checkbox
-                name="terms"
-                {...register("terms")}
-                color="primary"
-                error={!!errors.terms}
-              ></Checkbox>
-              <Typography variant=" ">
+            {/* Terms & Conditions */}
+            <Grid item xs={12} sx={{ display: "flex", alignItems: "center" }}>
+              <Checkbox {...register("terms")} color="primary" />
+              <Typography>
                 By continuing you agree to our{" "}
                 <Link to="/termsandcondition">
                   <Button variant="text" color="primary">
@@ -332,8 +284,9 @@ function Signup() {
               </Typography>
             </Grid>
 
+            {/* Submit Button */}
             <Grid item xs={12}>
-              <Button onClick={onSignup}
+              <Button
                 fullWidth
                 variant="contained"
                 color="primary"
@@ -344,6 +297,7 @@ function Signup() {
               </Button>
             </Grid>
 
+            {/* Sign In Link */}
             <Grid item xs={12}>
               <Typography align="center">
                 Already have an account?{" "}
