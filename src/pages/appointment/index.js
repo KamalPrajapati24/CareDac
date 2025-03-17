@@ -34,6 +34,10 @@ const caregiverData = [
     age:"3",
     gender:"male",
     amount:"$10/hr",
+    connection: " Juliya",
+    Notes: "Juliya",
+    Date: "Nov 11, 2024 5:10 pm",
+    connect:"Donec dictum tristique porta. Etiam convallis lorem lobortis nulla molestie, nec tincidunt ex ullamcorper. Quisque ultrices lobortis elit sed euismod. Duis in ultrices dolor, ac rhoncus."
     },
   {
     id: 102,
@@ -54,7 +58,11 @@ const caregiverData = [
     age:"45",
     gender:"male",
     amount:"$10/hr",
-  },
+    connection: " Jack",
+     Notes: "Jack",
+    Date: "Nov 05, 2024 3:10 pm ",
+    connect:"Donec dictum tristique porta. Etiam convallis lorem lobortis nulla molestie, nec tincidunt ex ullamcorper. Quisque ultrices lobortis elit sed euismod. Duis in ultrices dolor, ac rhoncus."
+ },
   {
     id: 103,
     name: "DJ",
@@ -72,8 +80,12 @@ const caregiverData = [
     bookingtime:"2:00 pm",
     bookedfor:"Sheron",
     age:"25",
-    gender:"female",
+    gender:"male",
     amount:"$10/hr",
+    connection: " DJ",
+    Notes: "DJ",
+    Date: "Nov 01, 2024 10:00 am",
+    connect:"Donec dictum tristique porta. Etiam convallis lorem lobortis nulla molestie, nec tincidunt ex ullamcorper. Quisque ultrices lobortis elit sed euismod. Duis in ultrices dolor, ac rhoncus."
   },
 ];
 
