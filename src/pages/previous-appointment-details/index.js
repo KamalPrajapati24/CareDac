@@ -1,4 +1,4 @@
-import React ,{useState} from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import {
   Box,
@@ -9,12 +9,11 @@ import {
   useTheme,
   Rating,
   Grid,
-   TextField,
-
+  TextField,
   SvgIcon,
   Divider,
- CardContent,
-   Stack
+  CardContent,
+  Stack,
 } from "@mui/material";
 import shield from "../../images/shield.svg";
 import AvTimerIcon from "@mui/icons-material/AvTimer";
@@ -22,8 +21,6 @@ import MilitaryTechIcon from "@mui/icons-material/MilitaryTech";
 import TranslateIcon from "@mui/icons-material/Translate";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
-
-
 
 function PreviousAppointmentDetails() {
   const location = useLocation();
@@ -659,210 +656,8 @@ function PreviousAppointmentDetails() {
                     </Grid>
                   </Grid>
                 </CardContent>
-
               </Paper>
-   <Paper
-                sx={{
-                  backgroundColor: "rgb(255, 255, 255)",
-                  color: "rgba(0, 0, 0, 0.87)",
-                  minWidth: "275px",
-                  boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
-                  transition: "box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1)",
-                  borderRadius: "4px",
-                  overflow: "hidden",
-                  padding: "10px",
-                  marginTop: "20px",
-                }}
-              >
-                <CardContent
-                  sx={{
-                    padding: "16px",
-                    paddingBottom: "24px",
-                  }}
-                >
-                <Grid
-                      sx={{
-                        flexBasis: "50%",
-                        WebkitBoxFlex: "0",
-                        flexGrow: "0",
-                        maxWidth: "50%",
-                        boxSizing: "border-box",
-                        margin: "0px",
-                        flexDirection: "row",
-                        display: "flex",
-                        gap: "8px",
-                      }}
-                    >
-                      <Typography
-                        sx={{
-                          fontSize: "1.25rem",
-                          lineHeight: "1.6",
-                          fontWeight: "700",
-                          margin: "0px",
-                        }}
-                      >
-                        Connect
-                      </Typography>
-                      <Typography
-                        sx={{
-                          margin: "0px",
-                          fontSize: "1.25rem",
-                          lineHeight: "1.6",
-                          fontWeight: "500",
-                          wordBreak: "break-word",
-                        }}
-                      >
-                        {caregiver.name}
-                      </Typography>
-                    </Grid>
-        <Stack direction="row" spacing={2} alignItems="center" mt={1}>
-          <Stack direction="row" spacing={1} alignItems="center">
-            <CalendarTodayIcon fontSize="small" color="disabled" />
-            <Typography variant="body2" color="text.secondary">
-              <strong>Next Availability Dates</strong> Jan 24th to 9th Feb
-            </Typography>
-          </Stack>
-        </Stack>
-        <Stack direction="row" spacing={2} alignItems="center" mt={1}>
-          <Stack direction="row" spacing={1} alignItems="center">
-            <AccessTimeIcon fontSize="small" color="disabled" />
-            <Typography variant="body2" color="text.secondary">
-              <strong>Time</strong> 9:00 AM to 5:00 PM
-            </Typography>
-          </Stack>
-        </Stack>
-      </CardContent>
-    </Paper>
-     <Paper
-                sx={{
-                  backgroundColor: "rgb(255, 255, 255)",
-                  color: "rgba(0, 0, 0, 0.87)",
-                  minWidth: "275px",
-                  boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
-                  transition: "box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1)",
-                  borderRadius: "4px",
-                  overflow: "hidden",
-                  padding: "10px",
-                  marginTop: "20px",
-                }}
-              >
-                <CardContent
-                  sx={{
-                    padding: "16px",
-                    paddingBottom: "24px",
-                  }}
-                >
-                      <Grid
-                      sx={{
-                        flexBasis: "50%",
-                        WebkitBoxFlex: "0",
-                        flexGrow: "0",
-                        maxWidth: "50%",
-                        boxSizing: "border-box",
-                        margin: "0px",
-                        flexDirection: "row",
-                        display: "flex",
-                        gap: "8px",
-                      }}
-                    >
-                      <Typography
-                        sx={{
-                          fontSize: "1.25rem",
-                          lineHeight: "1.6",
-                          fontWeight: "700",
-                          margin: "0px",
-                        }}
-                      >
-                        Notes from 
-                      </Typography>
-                      <Typography
-                        sx={{
-                          margin: "0px",
-                          fontSize: "1.25rem",
-                          lineHeight: "1.6",
-                          fontWeight: "500",
-                          wordBreak: "break-word",
-                        }}
-                      >
-                        {caregiver.Notes}
-                      </Typography>
-                    </Grid>
-                <Paper
-                sx={{
-                  backgroundColor: "rgb(255, 255, 255)",
-                  color: "rgba(0, 0, 0, 0.87)",
-                  minWidth: "275px",
-                  boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
-                  transition: "box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1)",
-                  borderRadius: "4px",
-                  overflow: "hidden",
-                  padding: "10px",
-                  marginTop: "20px",
-                }}
-              >
-                <CardContent
-                  sx={{
-                    padding: "16px",
-                    paddingBottom: "24px",
-                  }}
-                >
-                <Grid
-                      sx={{
-                        flexBasis: "50%",
-                        WebkitBoxFlex: "0",
-                        flexGrow: "0",
-                        maxWidth: "50%",
-                        boxSizing: "border-box",
-                        margin: "0px",
-                        flexDirection: "row",
-                        display: "flex",
-                        gap: "8px",
-                      }}
-                    >
-                <Typography
-                        sx={{
-                          fontSize: "1.25rem",
-                          lineHeight: "1.6",
-                          fontWeight: "700",
-                          margin: "0px",
-                        }}
-                      >
-                        Date
-                      </Typography>
-               <Typography
-                        sx={{
-                          margin: "0px",
-                          fontSize: "1.25rem",
-                          lineHeight: "1.6",
-                          fontWeight: "500",
-                          wordBreak: "break-word",
-                        }}
-                      >
-                        {caregiver.Date}
-                      </Typography> 
-                      </Grid>
-
-
-                
-               <Typography
-                        sx={{
-                          margin: "0px",
-                          fontSize: "16px",
-                          lineHeight: "24px",
-                          fontWeight: "400",
-                          wordBreak: "break-word",
-                          color: "rgba(52, 64, 84, 1)",
-                        }}
-                      >
-                        {caregiver.connect}
-                      </Typography>
-                </CardContent>
-                </Paper>
-            </CardContent>
-          
-          </Paper>
-            </Container>
-   <Paper
+              <Paper
                 sx={{
                   backgroundColor: "rgb(255, 255, 255)",
                   color: "rgba(0, 0, 0, 0.87)",
@@ -882,78 +677,273 @@ function PreviousAppointmentDetails() {
                   }}
                 >
                   <Grid
+                    sx={{
+                      flexBasis: "50%",
+                      WebkitBoxFlex: "0",
+                      flexGrow: "0",
+                      maxWidth: "50%",
+                      boxSizing: "border-box",
+                      margin: "0px",
+                      flexDirection: "row",
+                      display: "flex",
+                      gap: "8px",
+                    }}
+                  >
+                    <Typography
                       sx={{
-                        flexBasis: "50%",
-                        WebkitBoxFlex: "0",
-                        flexGrow: "0",
-                        maxWidth: "50%",
-                        boxSizing: "border-box",
+                        fontSize: "1.25rem",
+                        lineHeight: "1.6",
+                        fontWeight: "700",
                         margin: "0px",
-                        flexDirection: "row",
-                        display: "flex",
-                        gap: "8px",
                       }}
                     >
-                      <Typography
+                      Connect
+                    </Typography>
+                    <Typography
+                      sx={{
+                        margin: "0px",
+                        fontSize: "1.25rem",
+                        lineHeight: "1.6",
+                        fontWeight: "500",
+                        wordBreak: "break-word",
+                      }}
+                    >
+                      {caregiver.name}
+                    </Typography>
+                  </Grid>
+                  <Stack direction="row" spacing={2} alignItems="center" mt={1}>
+                    <Stack direction="row" spacing={1} alignItems="center">
+                      <CalendarTodayIcon fontSize="small" color="disabled" />
+                      <Typography variant="body2" color="text.secondary">
+                        <strong>Next Availability Dates</strong> Jan 24th to 9th
+                        Feb
+                      </Typography>
+                    </Stack>
+                  </Stack>
+                  <Stack direction="row" spacing={2} alignItems="center" mt={1}>
+                    <Stack direction="row" spacing={1} alignItems="center">
+                      <AccessTimeIcon fontSize="small" color="disabled" />
+                      <Typography variant="body2" color="text.secondary">
+                        <strong>Time</strong> 9:00 AM to 5:00 PM
+                      </Typography>
+                    </Stack>
+                  </Stack>
+                </CardContent>
+              </Paper>
+              <Paper
+                sx={{
+                  backgroundColor: "rgb(255, 255, 255)",
+                  color: "rgba(0, 0, 0, 0.87)",
+                  minWidth: "275px",
+                  boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
+                  transition: "box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1)",
+                  borderRadius: "4px",
+                  overflow: "hidden",
+                  padding: "10px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardContent
+                  sx={{
+                    padding: "16px",
+                    paddingBottom: "24px",
+                  }}
+                >
+                  <Grid
+                    sx={{
+                      flexBasis: "50%",
+                      WebkitBoxFlex: "0",
+                      flexGrow: "0",
+                      maxWidth: "50%",
+                      boxSizing: "border-box",
+                      margin: "0px",
+                      flexDirection: "row",
+                      display: "flex",
+                      gap: "8px",
+                    }}
+                  >
+                    <Typography
+                      sx={{
+                        fontSize: "1.25rem",
+                        lineHeight: "1.6",
+                        fontWeight: "700",
+                        margin: "0px",
+                      }}
+                    >
+                      Notes from
+                    </Typography>
+                    <Typography
+                      sx={{
+                        margin: "0px",
+                        fontSize: "1.25rem",
+                        lineHeight: "1.6",
+                        fontWeight: "500",
+                        wordBreak: "break-word",
+                      }}
+                    >
+                      {caregiver.Notes}
+                    </Typography>
+                  </Grid>
+                  <Paper
+                    sx={{
+                      backgroundColor: "rgb(255, 255, 255)",
+                      color: "rgba(0, 0, 0, 0.87)",
+                      minWidth: "275px",
+                      boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
+                      transition:
+                        "box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1)",
+                      borderRadius: "4px",
+                      overflow: "hidden",
+                      padding: "10px",
+                      marginTop: "20px",
+                    }}
+                  >
+                    <CardContent
+                      sx={{
+                        padding: "16px",
+                        paddingBottom: "24px",
+                      }}
+                    >
+                      <Grid
                         sx={{
-                          fontSize: "1.25rem",
-                          lineHeight: "1.6",
-                          fontWeight: "700",
+                          flexBasis: "50%",
+                          WebkitBoxFlex: "0",
+                          flexGrow: "0",
+                          maxWidth: "50%",
+                          boxSizing: "border-box",
                           margin: "0px",
+                          flexDirection: "row",
+                          display: "flex",
+                          gap: "8px",
                         }}
                       >
-                        Give a review to 
-                      </Typography>
+                        <Typography
+                          sx={{
+                            fontSize: "1.25rem",
+                            lineHeight: "1.6",
+                            fontWeight: "700",
+                            margin: "0px",
+                          }}
+                        >
+                          Date
+                        </Typography>
+                        <Typography
+                          sx={{
+                            margin: "0px",
+                            fontSize: "1.25rem",
+                            lineHeight: "1.6",
+                            fontWeight: "500",
+                            wordBreak: "break-word",
+                          }}
+                        >
+                          {caregiver.Date}
+                        </Typography>
+                      </Grid>
+
                       <Typography
                         sx={{
                           margin: "0px",
-                          fontSize: "1.25rem",
-                          lineHeight: "1.6",
-                          fontWeight: "500",
+                          fontSize: "16px",
+                          lineHeight: "24px",
+                          fontWeight: "400",
                           wordBreak: "break-word",
+                          color: "rgba(52, 64, 84, 1)",
                         }}
                       >
-                        {caregiver.name}
+                        {caregiver.connect}
                       </Typography>
-                    </Grid>
-                  
-                  
-        <Stack direction="row" alignItems="center" spacing={1} mt={1}>
-          <Rating
-            name="user-rating"
-            value={rating}
-            precision={0.5}
-            onChange={(event, newValue) => setRating(newValue)}
-          />
-        </Stack>
-        <Typography variant="body2" color="text.secondary" mt={2}>
-          Write review
-        </Typography>
-        <TextField
-          fullWidth
-          multiline
-          rows={4}
-          variant="outlined"
-          placeholder="Enter review..."
-          value={review}
-          onChange={(e) => setReview(e.target.value)}
-          sx={{ mt: 1 }}
-        />
-        <Box mt={2}>
-          <Button
-            variant="contained"
-            onClick={handleSubmit}
-            disabled={!rating || !review.trim()}
-          >
-            Submit
-          </Button>
-        </Box>
+                    </CardContent>
+                  </Paper>
+                </CardContent>
+              </Paper>
+            </Container>
+            <Paper
+              sx={{
+                backgroundColor: "rgb(255, 255, 255)",
+                color: "rgba(0, 0, 0, 0.87)",
+                minWidth: "275px",
+                boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
+                transition: "box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1)",
+                borderRadius: "4px",
+                overflow: "hidden",
+                padding: "10px",
+                marginTop: "20px",
+              }}
+            >
+              <CardContent
+                sx={{
+                  padding: "16px",
+                  paddingBottom: "24px",
+                }}
+              >
+                <Grid
+                  sx={{
+                    flexBasis: "50%",
+                    WebkitBoxFlex: "0",
+                    flexGrow: "0",
+                    maxWidth: "50%",
+                    boxSizing: "border-box",
+                    margin: "0px",
+                    flexDirection: "row",
+                    display: "flex",
+                    gap: "8px",
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      fontSize: "1.25rem",
+                      lineHeight: "1.6",
+                      fontWeight: "700",
+                      margin: "0px",
+                    }}
+                  >
+                    Give a review to
+                  </Typography>
+                  <Typography
+                    sx={{
+                      margin: "0px",
+                      fontSize: "1.25rem",
+                      lineHeight: "1.6",
+                      fontWeight: "500",
+                      wordBreak: "break-word",
+                    }}
+                  >
+                    {caregiver.name}
+                  </Typography>
+                </Grid>
 
-
-
-
-                  </CardContent>
-</Paper>
+                <Stack direction="row" alignItems="center" spacing={1} mt={1}>
+                  <Rating
+                    name="user-rating"
+                    value={rating}
+                    precision={0.5}
+                    onChange={(event, newValue) => setRating(newValue)}
+                  />
+                </Stack>
+                <Typography variant="body2" color="text.secondary" mt={2}>
+                  Write review
+                </Typography>
+                <TextField
+                  fullWidth
+                  multiline
+                  rows={4}
+                  variant="outlined"
+                  placeholder="Enter review..."
+                  value={review}
+                  onChange={(e) => setReview(e.target.value)}
+                  sx={{ mt: 1 }}
+                />
+                <Box mt={2}>
+                  <Button
+                    variant="contained"
+                    onClick={handleSubmit}
+                    disabled={!rating || !review.trim()}
+                  >
+                    Submit
+                  </Button>
+                </Box>
+              </CardContent>
+            </Paper>
           </Paper>
         </Container>
       </Box>

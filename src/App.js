@@ -20,7 +20,8 @@ import PreviousAppointmentDetails from "./pages/previous-appointment-details";
 import MakePayment from "./pages/payment";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-
+import PaymentHistory from "./pages/payment-history";
+import UserProfile from "./pages/user-profile";
 const stripePromise = loadStripe("pk_test_51QynzNQP1oQVAW7AhlyvQQRqFDDJRcQWkefEMSPyTQo7XuM0wHnPrbCSnuDC3eWMeCLpjwBFvFX71LsQrqAJbkmN001J2vBoSH");
 
 function App() {
@@ -32,6 +33,8 @@ function App() {
           <Route path="/caregiver-profile/:id" element={<CaregiverProfile />} />
           <Route path="/appointment" element={<AppointmentPage/>}/>
           <Route path="/previous-appointment-details/:id" element={<PreviousAppointmentDetails/>}/>
+           <Route path="/payment-history" element={<PaymentHistory/>}/>
+           < Route path="/user-profile" element={<UserProfile/>}/>
           <Route
             path="/payment"
             element={

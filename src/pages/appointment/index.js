@@ -28,17 +28,18 @@ const caregiverData = [
     language: "English,Hindi,Gujarati",
     description:
       "I am a 25-year-old graduate student pursuing my Master's in Social Work. I have 5 years of experience caring for children from newborn - 7 years. I am an animal lover, so pets are no problem! I have my own vehicle and am willing to drive children if necessary. I am more than happy to help with housework while watching your children! I am a non-smoker and have received my COVID-19 vaccine!",
-    bookingdate:"Jan 01, 2025",
-    bookingtime:"1:00 pm",
-    bookedfor:"Rocky",
-    age:"3",
-    gender:"male",
-    amount:"$10/hr",
+    bookingdate: "Jan 01, 2025",
+    bookingtime: "1:00 pm",
+    bookedfor: "Rocky",
+    age: "3",
+    gender: "male",
+    amount: "$10/hr",
     connection: " Juliya",
     Notes: "Juliya",
     Date: "Nov 11, 2024 5:10 pm",
-    connect:"Donec dictum tristique porta. Etiam convallis lorem lobortis nulla molestie, nec tincidunt ex ullamcorper. Quisque ultrices lobortis elit sed euismod. Duis in ultrices dolor, ac rhoncus."
-    },
+    connect:
+      "Donec dictum tristique porta. Etiam convallis lorem lobortis nulla molestie, nec tincidunt ex ullamcorper. Quisque ultrices lobortis elit sed euismod. Duis in ultrices dolor, ac rhoncus.",
+  },
   {
     id: 102,
     name: "Jack",
@@ -52,17 +53,18 @@ const caregiverData = [
     language: "English,Hindi,Gujarati",
     description:
       "I am a 40-year-old graduate person. I have 5 years of experience caring for all age humans. I am an animal lover, so pets are no problem! I have my own vehicle and am willing to drive children if necessary. I am more than happy to help with housework while watching your children! I am a non-smoker and have received my COVID-19 vaccine!",
-    bookingdate:"Dec 17, 2024",
-    bookingtime:"3:00 pm",
-    bookedfor:"Janarthan",
-    age:"45",
-    gender:"male",
-    amount:"$10/hr",
+    bookingdate: "Dec 17, 2024",
+    bookingtime: "3:00 pm",
+    bookedfor: "Janarthan",
+    age: "45",
+    gender: "male",
+    amount: "$10/hr",
     connection: " Jack",
-     Notes: "Jack",
+    Notes: "Jack",
     Date: "Nov 05, 2024 3:10 pm ",
-    connect:"Donec dictum tristique porta. Etiam convallis lorem lobortis nulla molestie, nec tincidunt ex ullamcorper. Quisque ultrices lobortis elit sed euismod. Duis in ultrices dolor, ac rhoncus."
- },
+    connect:
+      "Donec dictum tristique porta. Etiam convallis lorem lobortis nulla molestie, nec tincidunt ex ullamcorper. Quisque ultrices lobortis elit sed euismod. Duis in ultrices dolor, ac rhoncus.",
+  },
   {
     id: 103,
     name: "DJ",
@@ -76,16 +78,17 @@ const caregiverData = [
     language: "English,Hindi,Gujarati",
     description:
       "I am a 35-year-old person. I have 10 years of experience caring for children from newborn - 7 years and till oldage person. I am an animal lover, so pets are no problem! I have my own vehicle and am willing to drive children if necessary. I am more than happy to help with housework while watching your children! I am a non-smoker and have received my COVID-19 vaccine!",
-    bookingdate:"Nov 07, 2024",
-    bookingtime:"2:00 pm",
-    bookedfor:"Sheron",
-    age:"25",
-    gender:"male",
-    amount:"$10/hr",
+    bookingdate: "Nov 07, 2024",
+    bookingtime: "2:00 pm",
+    bookedfor: "Sheron",
+    age: "25",
+    gender: "male",
+    amount: "$10/hr",
     connection: " DJ",
     Notes: "DJ",
     Date: "Nov 01, 2024 10:00 am",
-    connect:"Donec dictum tristique porta. Etiam convallis lorem lobortis nulla molestie, nec tincidunt ex ullamcorper. Quisque ultrices lobortis elit sed euismod. Duis in ultrices dolor, ac rhoncus."
+    connect:
+      "Donec dictum tristique porta. Etiam convallis lorem lobortis nulla molestie, nec tincidunt ex ullamcorper. Quisque ultrices lobortis elit sed euismod. Duis in ultrices dolor, ac rhoncus.",
   },
 ];
 
@@ -97,6 +100,7 @@ const AppointmentPage = (caregiver) => {
     <Link
       to={`/previous-appointment-details/${caregiverData.id}`}
       state={{ caregiver }}
+      style={{ textDecoration: "none", color: "inherit" }}
     >
       <Container
         sx={{
@@ -216,6 +220,7 @@ const AppointmentPage = (caregiver) => {
                 key={booking.id}
                 to={`/previous-appointment-details/${booking.id}`}
                 state={{ caregiver: booking }}
+                style={{ textDecoration: "none", color: "inherit" }}
               >
                 <Container
                   sx={{

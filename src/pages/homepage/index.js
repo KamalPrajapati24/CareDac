@@ -75,7 +75,7 @@ const caregivers = [
 const CaregiverCard = ({ caregiver }) => {
   return (
     <Box>
-      <Link to={`/caregiver-profile/${caregiver.id}`} state={{ caregiver }}>
+      <Link to={`/caregiver-profile/${caregiver.id}`} state={{ caregiver }} style={{textDecoration:"none", color:"inherit"}}>
        
         <Paper
           sx={{

@@ -13,10 +13,10 @@ import {
   List,
   ListItem,
   ListItemText,
-
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+ 
 
 function Navbar() {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -26,7 +26,10 @@ function Navbar() {
   const checkResponsiveMode = () => {
     const width = window.innerWidth;
     const userAgent = navigator.userAgent;
-    const isEmulated = userAgent.includes("Mobile") || userAgent.includes("Android") || userAgent.includes("iPhone");
+    const isEmulated =
+      userAgent.includes("Mobile") ||
+      userAgent.includes("Android") ||
+      userAgent.includes("iPhone");
 
     if (width < 900 && isEmulated) {
       setIsMobile(true);
@@ -35,7 +38,6 @@ function Navbar() {
     }
   };
 
-  
   useEffect(() => {
     checkResponsiveMode();
     window.addEventListener("resize", checkResponsiveMode);
@@ -43,16 +45,20 @@ function Navbar() {
   }, []);
 
   const toggleDrawer = (open) => (event) => {
-    if (event.type === "keydown" && (event.key === "Tab" || event.key === "Shift")) {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
       return;
     }
     setDrawerOpen(open);
   };
+  
 
   const menuItems = [
     { text: "Home", path: "/homepage" },
     { text: "Appointments", path: "/appointment" },
-    { text: "Payments", path: "#" },
+    { text: "Payments", path: "/payment-history" },
   ];
 
   return (
@@ -65,24 +71,42 @@ function Navbar() {
         backgroundColor: "rgb(255, 255, 255)",
       }}
     >
-      <AppBar position="static" color="default" elevation={1} sx={{ backgroundColor: "rgb(255, 255, 255)" }}>
+      <AppBar
+        position="static"
+        color="default"
+        elevation={1}
+        sx={{ backgroundColor: "rgb(255, 255, 255)" }}
+      >
         <Toolbar>
           {isMobile && (
-            <IconButton edge="start" color="inherit" onClick={toggleDrawer(true)}>
+            <IconButton
+              edge="start"
+              color="inherit"
+              onClick={toggleDrawer(true)}
+            >
               <MenuIcon />
             </IconButton>
           )}
 
-          
           <Box
             sx={{
               display: "flex",
               alignItems: "center",
               flexGrow: 1,
-              justifyContent: isMobile ? "center" : "flex-start", 
+              justifyContent: isMobile ? "center" : "flex-start",
             }}
           >
-            <img src={Image} alt="Logo" style={{ height: 40, marginRight: 10, maxWidth: "100%", border: "1px solid rgb(152, 162, 179)", borderRadius: "10px"  }} />
+            <img
+              src={Image}
+              alt="Logo"
+              style={{
+                height: 40,
+                marginRight: 10,
+                maxWidth: "100%",
+                border: "1px solid rgb(152, 162, 179)",
+                borderRadius: "10px",
+              }}
+            />
             {!isMobile && (
               <>
                 <Typography variant="h6" color="inherit">
@@ -99,20 +123,36 @@ function Navbar() {
             <Box sx={{ display: "flex", gap: "20px", alignItems: "center" }}>
               {menuItems.map((item) => (
                 <Link to={item.path} key={item.text}>
-                  <Button sx={{ color: "black", fontSize: "18px", fontWeight: "700" }}>{item.text}</Button>
+                  <Button
+                    sx={{ color: "black", fontSize: "18px", fontWeight: "700" }}
+                  >
+                    {item.text}
+                  </Button>
                 </Link>
               ))}
-              <Button variant="contained" color="primary" sx={{ textTransform: "none", borderRadius: 20 }}>
-                User
-              </Button>
+              <Box sx={{ textAlign: "left", padding: 2 }}>
+                <Button
+                  component={Link}
+                  to="/user-profile"
+                  variant="contained"
+                  color="primary"
+                  sx={{ textTransform: "none", borderRadius: 20}}
+                >
+                  User
+                </Button>
+              </Box>
             </Box>
           )}
         </Toolbar>
       </AppBar>
 
-     
       <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
-        <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
+        <Box
+          sx={{ width: 250 }}
+          role="presentation"
+          onClick={toggleDrawer(false)}
+          onKeyDown={toggleDrawer(false)}
+        >
           <List>
             {menuItems.map((item) => (
               <ListItem button key={item.text} component={Link} to={item.path}>
@@ -120,9 +160,15 @@ function Navbar() {
               </ListItem>
             ))}
           </List>
-         
+
           <Box sx={{ textAlign: "left", padding: 2 }}>
-            <Button variant="contained" color="primary" sx={{ textTransform: "none", borderRadius: 20 }}>
+            <Button
+              component={Link}
+              to="/user-profile"
+              variant="contained"
+              color="primary"
+              sx={{ textTransform: "none", borderRadius: 20}}
+            >
               User
             </Button>
           </Box>
